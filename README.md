@@ -1,1 +1,2 @@
 # FeralmonFrontierSurvive
+วืธีการเล่นเกมนะครับ
