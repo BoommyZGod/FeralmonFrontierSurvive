@@ -24,6 +24,8 @@ Pause
 ผมเลือก Android Api Target level 33
 อันนี้ Link Test Game บน Web
 [https://boomzass.itch.io/f](https://boomzass.itch.io/f)
-Update Refector Enemy and EnemySpawner
+
+
+# Update Refector Enemy and EnemySpawner
 1.State Pattern ใช้เพื่อจัดการพฤติกรรมที่เปลี่ยนแปลงของศัตรูตามสถานะภายใน ทำให้โค้ดการจัดการพฤติกรรมมีความสะอาดและง่ายต่อการขยาย เรานำมาใช้ในเรื่องการเปลี่ยน State ของศัตรู
 2.Observer Pattern ใช้เพื่อทำให้ส่วนประกอบของเกมสื่อสารกันโดยไม่ต้องรู้จักกันโดยตรง (Decoupling) โดยเฉพาะในการแจ้งเตือนเหตุการณ์สำคัญ เรานำมาใช้ในส่วน การ LevelUp
