@@ -29,3 +29,11 @@ Pause
 # Update Refector Enemy and EnemySpawner
 1.State Pattern ใช้เพื่อจัดการพฤติกรรมที่เปลี่ยนแปลงของศัตรูตามสถานะภายใน ทำให้โค้ดการจัดการพฤติกรรมมีความสะอาดและง่ายต่อการขยาย เรานำมาใช้ในเรื่องการเปลี่ยน State ของศัตรู
 2.Observer Pattern ใช้เพื่อทำให้ส่วนประกอบของเกมสื่อสารกันโดยไม่ต้องรู้จักกันโดยตรง (Decoupling) โดยเฉพาะในการแจ้งเตือนเหตุการณ์สำคัญ เรานำมาใช้ในส่วน การ LevelUp
+# Inthis Update Process
+1.ในเรื่อง State Pattern แก้ไขโค้ดที่ซับซ้อนใน Function Update และ FixedUpdate ของศัตรูให้จัดการพฤติกรรมตามสถานะได้อย่างชัดเจนและขยายได้ง่าย
+   1.1โดย Enemy.cs ทำหน้าที่เป็นตัวจัดการหลัก มีเมธอด TransitionToState() และเก็บ currentState ไว้
+   1.2 สร้าง IEnemyState.cs	นิยามเมธอดพื้นฐานที่ทุกสถานะต้องมี (EnterState, UpdateState, ExitState)
+   1.3 สร้าง EnemyChasingState.cs และ EnemyPushedState.cs	แยกตรรกะการเคลื่อนที่ไล่ล่าและการถูกผลักออกจากกันอย่างชัดเจน ทำให้โค้ดใน Enemy.cs ไม่รกเกินความจำเป็น
+2.ในเรื่องObserver Pattern แก้ไขปัญหาระหว่างศัตรูและผู้เล่นในการให้ค่าประสบการณ์ (EXP) แก่ผู้เล่นเมื่อศัตรูตาย
+    2.1 ใน Enemy.cs ลบการเรียก PlayerController.Instance.GetExperience() ออก และแทนที่ด้วยการเรียก OnEnemyKilled?.Invoke(experienceToGive); Event
+    2.2 ใน Game Manager เพิ่ม HandleEnemyKilled(int experienceAmount) เพื่อให้ GameManager ทำหน้าที่เป็นตัวกลางในการส่ง EXP ไปให้ผู้เล่น
